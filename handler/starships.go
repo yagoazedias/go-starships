@@ -12,7 +12,7 @@ type IStarship interface {
 }
 
 type Starship struct {
-	service *s.Starships
+	service s.IStarships
 }
 
 func (h *Starship) StarshipsHandler(w http.ResponseWriter, r *http.Request) {
@@ -24,8 +24,8 @@ func (h *Starship) StarshipsHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(result)
 }
 
-func NewStarship() *Starship {
-	return &Starship{
-		service: &s.Starships{},
+func NewStarship() Starship {
+	return Starship{
+		service: s.NewStarships(),
 	}
 }

@@ -12,7 +12,7 @@ type IStarship interface {
 
 type Starship struct {}
 
-func (*Starship) GetStarships() (*model.StarshipsResponse, error) {
+func (Starship) GetStarships() (*model.StarshipsResponse, error) {
 	r, err := req.Get("https://swapi.dev/api/starships/")
 	if err != nil {
 		fmt.Sprintf("Error request to url: %s", err.Error())
@@ -27,6 +27,6 @@ func (*Starship) GetStarships() (*model.StarshipsResponse, error) {
 	return &response, nil
 }
 
-func NewStarship() *Starship {
-	return &Starship{}
+func NewStarships() Starship {
+	return Starship{}
 }

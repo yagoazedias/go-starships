@@ -11,15 +11,20 @@ type IStarships interface {
 }
 
 type Starships struct {
-	repository *respository.Starship
+	repository respository.IStarship
 }
 
-func (s *Starships) GetStarships() ([]model.Starship, error) {
-	s.repository = respository.NewStarship()
+func (s Starships) GetStarships() ([]model.Starship, error) {
 	apiResponse, err := s.repository.GetStarships()
 	if err != nil {
 		fmt.Sprintf("Error request to api: %s", err.Error())
 		return nil, err
 	}
 	return apiResponse.Results, nil
+}
+
+func NewStarships() IStarships {
+	return Starships{
+		repository: respository.NewStarships(),
+	}
 }
