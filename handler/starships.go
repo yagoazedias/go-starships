@@ -19,6 +19,8 @@ func (h *Starship) StarshipsHandler(w http.ResponseWriter, r *http.Request) {
 	result, err := h.service.GetStarships()
 	if err != nil {
 		fmt.Printf("Error getting starships: %s", err.Error())
+		w.WriteHeader(http.StatusInternalServerError)
+		return
 	}
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(result)

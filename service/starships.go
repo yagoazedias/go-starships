@@ -1,9 +1,9 @@
-package respository
+package service
 
 import (
 	"fmt"
 	"post-example/model"
-	"post-example/respository"
+	"post-example/repository"
 )
 
 type IStarships interface {
@@ -11,7 +11,7 @@ type IStarships interface {
 }
 
 type Starships struct {
-	repository respository.IStarship
+	repository repository.IStarship
 }
 
 func (s Starships) GetStarships() ([]model.Starship, error) {
@@ -25,6 +25,6 @@ func (s Starships) GetStarships() ([]model.Starship, error) {
 
 func NewStarships() IStarships {
 	return Starships{
-		repository: respository.NewStarships(),
+		repository: repository.NewStarships(),
 	}
 }

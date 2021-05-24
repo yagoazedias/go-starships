@@ -1,6 +1,8 @@
 package model
 
-import "time"
+import (
+	"time"
+)
 
 type Starship struct {
 	Name                 string        `json:"name"`
@@ -21,6 +23,48 @@ type Starship struct {
 	Created              time.Time     `json:"created"`
 	Edited               time.Time     `json:"edited"`
 	URL                  string        `json:"url"`
+}
+
+func NewStarship(
+	name string,
+	model string,
+	manufacturer string,
+	costInCredits string,
+	length string,
+	maxAtmosphereSpeed string,
+	crew string,
+	passengers string,
+	cargoCapacity string,
+	consumables string,
+	hyperdriveRating string,
+	mglt string,
+	starshipClass string,
+	pilots []interface{},
+	films []string,
+	created time.Time,
+	edited time.Time,
+	URL string,
+	) *Starship {
+
+	return &Starship{
+		Name: name,
+		Model: model,
+		Manufacturer: manufacturer,
+		CostInCredits: costInCredits,
+		Length: length,
+		MaxAtmosphereSpeed: maxAtmosphereSpeed,
+		Crew: crew,
+		Passengers: passengers,
+		CargoCapacity: cargoCapacity,
+		Consumables: consumables,
+		HyperdriveRating: hyperdriveRating,
+		Mglt: mglt,
+		StarshipClass: starshipClass,
+		Pilots: pilots,
+		Films: films,
+		Created: created,
+		Edited: edited,
+		URL: URL}
 }
 
 type StarshipsResponse struct {
